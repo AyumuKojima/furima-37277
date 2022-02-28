@@ -129,7 +129,7 @@
     <ul class='item-lists'>
 
       <% if Item.count != 0 %>
-        <% Item.all.each do |item| %>
+        <% @items.each do |item| %>
           <li class='list'>
             <%= link_to "#" do %>
             <div class='item-img-content'>
