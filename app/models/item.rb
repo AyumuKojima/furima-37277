@@ -14,7 +14,7 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :item_name
     validates :info
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid" }
+    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid" }
   end
 
   with_options numericality: { other_than: 1, message: "can't be blank" } do
@@ -26,7 +26,7 @@ class Item < ApplicationRecord
   end
 
   private
-  
+
   def image_attached
     if !image.attached?
       errors.add(:image, "can't be blank")
